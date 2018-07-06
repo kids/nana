@@ -30,6 +30,21 @@ in __init__ method
 On the contrary refer the other, selenium one
 '''
 
+def bkup_cookie_zhihu():
+	import hashlib
+	import pickle
+	from bs4 import BeautifulSoup
+	from selenium import webdriver
+
+	oper = Opener()
+	u_set0=set()
+	u_set1=set()
+	b=webdriver.Firefox()
+	b.get('http://zhihu.com')
+	cookies=pickle.load(open('/Users/r/Downloads/zhihu.pickle','r'))
+	for cookie in cookies:
+	    b.add_cookie(cookie)
+
 class IdCollector:
     def __init__(self,url='about:blank'):
         self.ie = DispatchEx('InternetExplorer.Application')
