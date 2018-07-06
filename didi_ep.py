@@ -197,20 +197,7 @@ def diffpoi():
 class HMM:
     def __init__(self, Ann, Bnm, pi1n):
         pass
-    # 函数名称：Forward *功能：前向算法估计参数 *参数:phmm:指向HMM的指针
-    # T:观察值序列的长度 O:观察值序列    
-    # alpha:运算中用到的临时数组 pprob:返回
-
     
-    # 计算gamma : 时刻t时马尔可夫链处于状态Si的概率    
-    def ComputeGamma(self, T, alpha, beta, gamma):
-        pass
-    # 计算sai(i,j) 为给定训练序列O和模型lambda时：
-    # 时刻t是马尔可夫链处于Si状态，二时刻t+1处于Sj状态的概率
-    def ComputeXi(self,T,O,alpha,beta,gamma,xi):
-        pass
-    # Baum-Welch算法
-    # 输入 L个观察序列O，初始模型：HMM={A,B,pi,N,M}
     def BaumWelch(self,L,T,O,alpha,beta,gamma):
         print "BaumWelch"
         DELTA = 0.01 ; round = 0 ; flag = 1 ; probf = [0.0]
@@ -248,7 +235,6 @@ class HMM:
                                 numeratorB[i,k] += gamma[t,i]
                             
             # M - step
-            # 重估状态转移矩阵 和 观察概率矩阵
             for i in range(self.N):
                 self.pi[i] = 0.001/self.N + 0.999*pi[i]/L
                 for j in range(self.N):
@@ -278,7 +264,7 @@ class HMM:
                 break
          
 def latlon2poi(p,host='gaode'):
-#逆地理解析
+# reverse geo coding
     socket.setdefaulttimeout(10)
     if host=='gaode':
         u='http://restapi.amap.com/v3/geocode/regeo?location='+p+'&extensions=base&output=json&key=d7307f1ea45bd1f25c3abba0f812e96d'
